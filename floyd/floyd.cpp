@@ -12,39 +12,33 @@ bool floyd(int a[], int N)
 	int mu;
 	int lam;
 
-	while (1) {
+	do
+	{
 		p += 1;
 		q += 2;
 
 		if (p >= N || q >= N)
 			return false;
-
-		if (a[p] == a[q])
-			break;
-	}
+	} while (a[p] != a[q]);
 
 	p = 0;
 	printf("p: %d, q: %d \n", p, q);
-	while (1) {
+	do 
+	{
 		p += 1;
 		q += 1;
-
-		if (a[p] == a[q])
-			break;
-	}
+	} while (a[p] != a[q]);
 	mu = p;
 	printf("mu: %d \n", mu);
 
-	lam = 1;
 	p = mu;
-	q = mu + lam;
-	while (1) {
-		if (a[p] == a[q])
-			break;
-
+	q = mu;
+	lam = 0;
+	do
+	{
 		lam++;
 		q = mu + lam;
-	}
+	} while (a[p] != a[q]);
 	printf("lam: %d \n", lam);
 
 	return true;
